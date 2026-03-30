@@ -1,0 +1,32 @@
+CREATE DATABASE IF NOT EXISTS help_system;
+USE help_system;
+
+CREATE TABLE Usuarios (
+    IDusuario INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    departamento VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Solicitacoes (
+    IDsolicitacao INT AUTO_INCREMENT PRIMARY KEY,
+    titulo_pergunta VARCHAR(255) NOT NULL,
+    pergunta VARCHAR(255) NOT NULL,
+    nome VARCHAR(255) NOT NULL,
+    departamento VARCHAR(255) NOT NULL,
+    usuario_id INT,
+    FOREIGN KEY (usuario_id) REFERENCES Usuarios(IDusuario) ON DELETE CASCADE
+);
+
+CREATE TABLE Respostas (
+    IDrespostas INT AUTO_INCREMENT PRIMARY KEY,
+    titulo_pergunta VARCHAR(255) NOT NULL,
+    pergunta VARCHAR(255) NOT NULL,
+    resposta VARCHAR(255) NOT NULL,
+    departamento VARCHAR(255) NOT NULL,
+    solicitacao_id INT,
+    usuario_id INT,
+    FOREIGN KEY (solicitacao_id) REFERENCES Solicitacoes(IDsolicitacao) ON DELETE CASCADE,
+    FOREIGN KEY (usuario_id) REFERENCES Usuarios(IDusuario) ON DELETE CASCADE
+);

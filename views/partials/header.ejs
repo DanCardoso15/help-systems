@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help System</title>
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <a href="/">Help System</a>
+        <% if (usuario) { %>
+            <span><%= usuario.nome %> — <%= usuario.departamento %></span>
+            <a href="/logout">Sair</a>
+        <% } %>
+    </nav>
+    <main>

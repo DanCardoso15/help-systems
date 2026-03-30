@@ -1,0 +1,48 @@
+<%- include('partials/header') %>
+
+<h2>Cadastro</h2>
+
+<% if (erro) { %>
+    <p style="color: red;"><%= erro %></p>
+<% } %>
+<% if (sucesso) { %>
+    <p style="color: green;"><%= sucesso %></p>
+<% } %>
+
+<form method="POST" action="/cadastro">
+    <div>
+        <label for="nome">Nome completo</label>
+        <input type="text" id="nome" name="nome" required>
+    </div>
+    <div>
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" required placeholder="seu@email.com">
+    </div>
+    <div>
+        <label for="departamento">Departamento</label>
+        <select id="departamento" name="departamento" required>
+            <option value="">Selecione...</option>
+            <option value="TI">TI</option>
+            <option value="RH">RH</option>
+            <option value="Financeiro">Financeiro</option>
+            <option value="Comercial">Comercial</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Operacoes">Operacoes</option>
+            <option value="Juridico">Juridico</option>
+        </select>
+    </div>
+    <div>
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" required minlength="6">
+        <small>Minimo 6 caracteres</small>
+    </div>
+    <div>
+        <label for="confirmarSenha">Confirmar senha</label>
+        <input type="password" id="confirmarSenha" name="confirmarSenha" required>
+    </div>
+    <button type="submit">Cadastrar</button>
+</form>
+
+<p>Ja tem conta? <a href="/login">Faca login</a></p>
+
+<%- include('partials/footer') %>
