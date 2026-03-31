@@ -1,1 +1,9 @@
 @import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+/* incluí o import em ambos ejs e css pq por algum motivo não está funcionando. resolver dps*/
+
+@theme {
+    --font-display: "Chivo", serif;
+    --default-font-family: "Inter", sans-serif;
+    font-family: "Inter";
+}

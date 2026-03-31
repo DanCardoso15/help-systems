@@ -4,14 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help System</title>
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="../../public/css/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <nav>
-        <a href="/">Help System</a>
-        <% if (usuario) { %>
-            <span><%= usuario.nome %> — <%= usuario.departamento %></span>
-            <a href="/logout">Sair</a>
-        <% } %>
+    <nav class="bg-purple-800 text-white w-full">
+        <div class="w-4/5 px-8 py-6 flex justify-between">
+            <h1 class="text-4xl font-display"><a href="/">Help System</a></h1>
+            <% if (usuario) { %>
+                <span><%= usuario.nome %> — <%= usuario.departamento %></span>
+                <a href="/logout">Sair</a>
+            <% } %>
+        </div>
     </nav>
     <main>
