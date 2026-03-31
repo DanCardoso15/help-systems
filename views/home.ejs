@@ -1,0 +1,45 @@
+<%- include('partials/header') %>
+
+<h2>Tela Inicial</h2>
+
+<!-- RF02.3: Nome e departamento do usuario -->
+<div>
+    <p><strong>Usuario:</strong> <%= usuario.nome %></p>
+    <p><strong>Departamento:</strong> <%= usuario.departamento %></p>
+</div>
+
+<!-- RF02.2: Botoes de acesso -->
+<div>
+    <a href="/solicitacoes/nova"><button>Registrar Pergunta</button></a>
+    <a href="/respostas"><button>Registrar Resposta</button></a>
+</div>
+
+<!-- RF02.4: Listagem de solicitacoes -->
+<h3>Solicitacoes</h3>
+
+<% if (solicitacoes.length === 0) { %>
+    <p>Nenhuma solicitacao encontrada.</p>
+<% } else { %>
+    <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Pergunta</th>
+                <th>Colaborador</th>
+                <th>Departamento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% solicitacoes.forEach(s => { %>
+                <tr>
+                    <td><%= s.titulo_pergunta %></td>
+                    <td><%= s.pergunta %></td>
+                    <td><%= s.nome %></td>
+                    <td><%= s.departamento %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+<% } %>
+
+<%- include('partials/footer') %>

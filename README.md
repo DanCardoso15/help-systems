@@ -7,7 +7,8 @@ Sistema interno de perguntas e respostas para auxiliar colaboradores entre depar
 - **Backend:** Node.js + Express.js
 - **Template Engine:** EJS
 - **Banco de Dados:** MySQL
-- **Autenticacao:** bcrypt + express-session
+- **Autenticacao:** bcryptjs + express-session
+- **Hospedagem:** Railway
 
 ## Pré-requisitos
 
@@ -44,7 +45,7 @@ DB_HOST=localhost
 DB_PORT=3306
 DB_USER=root
 DB_PASSWORD=sua_senha
-DB_NAME=HelpSystem
+DB_NAME=help_system
 SESSION_SECRET=uma_chave_secreta_qualquer
 PORT=3000
 ```
@@ -57,7 +58,7 @@ PORT=3000
 npm run dev
 ```
 
-**Modo producao:**
+**Modo produção:**
 
 ```bash
 npm start
@@ -71,16 +72,20 @@ Acesse no navegador: `http://localhost:3000`
 help-systems/
 ├── app.js                 # Arquivo principal do servidor
 ├── db/
-│   ├── pool.js            # Conexão com o banco de dados
+│   ├── pool.js            # Conexao com o banco de dados
 │   └── ScriptSQL.txt      # Script de criação do banco
 ├── routes/
-│   └── auth.js            # Rotas de autenticação (login/cadastro)
+│   ├── auth.js            # Rotas de autenticação (login/cadastro)
+│   ├── home.js            # Rota da tela inicial
+│   └── solicitacoes.js    # Rotas de criação de solicitações
 ├── views/
-│   ├── login.ejs          # Página de login
-│   ├── cadastro.ejs       # Página de cadastro
+│   ├── login.ejs          # Pagina de login
+│   ├── cadastro.ejs       # Pagina de cadastro
+│   ├── home.ejs           # Tela inicial
+│   ├── nova-solicitacao.ejs # Formulário de nova solicitação
 │   └── partials/
-│       ├── header.ejs     # Cabeçalho reutilizável
-│       └── footer.ejs     # Rodapé reutilizável
+│       ├── header.ejs     # Cabecalho reutilizável
+│       └── footer.ejs     # Rodape reutilizável
 ├── public/
 │   └── css/
 │       └── style.css      # Estilos do sistema
@@ -92,8 +97,10 @@ help-systems/
 
 - [x] Cadastro de usuario com validacao de e-mail e criptografia de senha
 - [x] Login e logout com sessao
-- [ ] Tela inicial
-- [ ] Criar solicitacoes
-- [ ] Responder solicitacoes
-- [ ] Listar solicitacoes
-- [ ] Gerenciamento de solicitacoes
+- [x] Tela inicial com nome/departamento do usuario e botoes de acesso
+- [x] Criar solicitacoes (perguntas)
+- [x] Listagem de solicitacoes na tela inicial
+- [x] Deploy no Railway
+- [x] Responder solicitacoes
+- [ ] Filtros e ordenacao na listagem
+- [ ] Gerenciamento de solicitacoes (status, duplicidade)

@@ -1,0 +1,34 @@
+<%- include('partials/header') %>
+
+<h2>Solicitacoes para Responder</h2>
+
+<% if (solicitacoes.length === 0) { %>
+    <p>Nenhuma solicitacao encontrada.</p>
+<% } else { %>
+    <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Pergunta</th>
+                <th>Colaborador</th>
+                <th>Departamento</th>
+                <th>Acao</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% solicitacoes.forEach(s => { %>
+                <tr>
+                    <td><%= s.titulo_pergunta %></td>
+                    <td><%= s.pergunta %></td>
+                    <td><%= s.nome %></td>
+                    <td><%= s.departamento %></td>
+                    <td><a href="/respostas/<%= s.IDsolicitacao %>">Responder</a></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+<% } %>
+
+<a href="/home">Voltar</a>
+
+<%- include('partials/footer') %>
