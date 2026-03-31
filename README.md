@@ -101,6 +101,6 @@ help-systems/
 - [x] Criar solicitacoes (perguntas)
 - [x] Listagem de solicitacoes na tela inicial
 - [x] Deploy no Railway
-- [ ] Responder solicitacoes
+- [x] Responder solicitacoes
 - [ ] Filtros e ordenacao na listagem
 - [ ] Gerenciamento de solicitacoes (status, duplicidade)
