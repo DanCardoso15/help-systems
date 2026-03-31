@@ -7,3 +7,71 @@
     --default-font-family: "Inter", sans-serif;
     font-family: "Inter";
 }
+
+:root {
+    /* Color styles */
+    --black: rgba(0, 0, 0, 1);
+    --white: rgba(255, 255, 255, 1);
+    --primary-darker: rgba(87, 43, 175, 1);
+    --primary-main: rgba(97, 43, 205, 1);
+    --primary-lighter: rgba(187, 153, 255, 1);
+    --primary-subtle: rgba(236, 227, 255, 1);
+    --dark-1: rgba(58, 58, 60, 1);
+    --dark-2: rgba(107, 117, 136, 1);
+    --dark-3: rgba(143, 144, 166, 1);
+    --dark-4: rgba(199, 201, 217, 1);
+    --light-1: rgba(221, 229, 233, 1);
+    --light-2: rgba(235, 235, 240, 1);
+    --light-3: rgba(242, 242, 245, 1);
+    --light-4: rgba(250, 250, 252, 1);
+    --blue-1: rgba(0, 79, 196, 1);
+    --blue-2: rgba(0, 99, 247, 1);
+    --blue-3: rgba(91, 141, 239, 1);
+    --blue-4: rgba(157, 191, 249, 1);
+    --teal-1: rgba(0, 183, 196, 1);
+    --teal-2: rgba(0, 207, 222, 1);
+    --teal-3: rgba(115, 223, 231, 1);
+    --teal-4: rgba(169, 239, 242, 1);
+    --green-1: rgba(5, 166, 96, 1);
+    --green-2: rgba(6, 194, 112, 1);
+    --green-3: rgba(57, 217, 138, 1);
+    --green-4: rgba(87, 235, 161, 1);
+    --yellow-1: rgba(229, 184, 0, 1);
+    --yellow-2: rgba(255, 204, 0, 1);
+    --yellow-3: rgba(253, 221, 72, 1);
+    --yellow-4: rgba(253, 237, 114, 1);
+    --orange-1: rgba(229, 122, 0, 1);
+    --orange-2: rgba(255, 136, 0, 1);
+    --orange-3: rgba(253, 172, 66, 1);
+    --orange-4: rgba(252, 204, 117, 1);
+    --red-1: rgba(229, 53, 53, 1);
+    --red-2: rgba(255, 59, 59, 1);
+    --red-3: rgba(255, 92, 92, 1);
+    --red-4: rgba(255, 128, 128, 1);
+
+    /* Text-size styles */
+    /* base size: body--normal-16px-----reg (16px) */
+    --display-1: 3rem;
+    --display-2: 2.5rem;
+    --heading-1: 2.75rem;
+    --heading-2: 2.25rem;
+    --heading-3: 1.75rem;
+    --heading-4: 1.5rem;
+    --heading-5: 1.25rem;
+    --heading-6: 1rem;
+    --stylized-p: 1.38rem;
+    --body-lg-reg: 1.25rem;
+    --body--md-reg: 1.13rem;
+    --body-bs-reg: 1rem;
+    --body-sm-reg: 0.88rem;
+    --label-xs: 0.63rem;
+    --label-sm: 0.75rem;
+    --label-bs: 0.88rem;
+    --label-lg: 1rem;
+    --label-xl: 1.13rem;
+
+    /* Effect styles */
+    --primary--elevation: 0px 8px 24px rgba(51, 119, 255, 0.15);
+    --light--elevation: 4px 8px 24px rgba(242, 242, 245, 1);
+
+}
