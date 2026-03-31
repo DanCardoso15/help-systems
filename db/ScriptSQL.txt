@@ -1,27 +1,28 @@
-CREATE DATABASE HelpSystem;
+CREATE DATABASE IF NOT EXISTS HelpSystem;
+USE HelpSystem;
 
 CREATE TABLE Usuarios (
-    IDusuario INT PRIMARY KEY,
+    IDusuario INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
     senha VARCHAR(255) NOT NULL,
     departamento VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Solicitacoes (
-    IDsolicitacao INT PRIMARY KEY,
+    IDsolicitacao INT AUTO_INCREMENT PRIMARY KEY,
     titulo_pergunta VARCHAR(255) NOT NULL,
     pergunta VARCHAR(255) NOT NULL,
     IDusuario INT,
     departamento VARCHAR(255) NOT NULL,
-    FOREIGN KEY (IDusuario) REFERENCES Usuarios(IDusuario)
+    FOREIGN KEY (IDusuario) REFERENCES Usuarios(IDusuario) ON DELETE CASCADE
 );
 
 CREATE TABLE Respostas (
-    IDresposta INT PRIMARY KEY,
+    IDresposta INT AUTO_INCREMENT PRIMARY KEY,
     resposta VARCHAR(255) NOT NULL,
     IDsolicitacao INT,
     IDusuario INT,
-    FOREIGN KEY (IDsolicitacao) REFERENCES Solicitacoes(IDsolicitacao),
-    FOREIGN KEY (IDusuario) REFERENCES Usuarios(IDusuario)
+    FOREIGN KEY (IDsolicitacao) REFERENCES Solicitacoes(IDsolicitacao) ON DELETE CASCADE,
+    FOREIGN KEY (IDusuario) REFERENCES Usuarios(IDusuario) ON DELETE CASCADE
 );
