@@ -7,7 +7,8 @@ Sistema interno de perguntas e respostas para auxiliar colaboradores entre depar
 - **Backend:** Node.js + Express.js
 - **Template Engine:** EJS
 - **Banco de Dados:** MySQL
-- **Autenticacao:** bcrypt + express-session
+- **Autenticacao:** bcryptjs + express-session
+- **Hospedagem:** Railway
 
 ## Pre-requisitos
 
@@ -44,7 +45,7 @@ DB_HOST=localhost
 DB_PORT=3306
 DB_USER=root
 DB_PASSWORD=sua_senha
-DB_NAME=HelpSystem
+DB_NAME=help_system
 SESSION_SECRET=uma_chave_secreta_qualquer
 PORT=3000
 ```
@@ -74,10 +75,14 @@ help-systems/
 │   ├── pool.js            # Conexao com o banco de dados
 │   └── ScriptSQL.txt      # Script de criacao do banco
 ├── routes/
-│   └── auth.js            # Rotas de autenticacao (login/cadastro)
+│   ├── auth.js            # Rotas de autenticacao (login/cadastro)
+│   ├── home.js            # Rota da tela inicial
+│   └── solicitacoes.js    # Rotas de criacao de solicitacoes
 ├── views/
 │   ├── login.ejs          # Pagina de login
 │   ├── cadastro.ejs       # Pagina de cadastro
+│   ├── home.ejs           # Tela inicial
+│   ├── nova-solicitacao.ejs # Formulario de nova solicitacao
 │   └── partials/
 │       ├── header.ejs     # Cabecalho reutilizavel
 │       └── footer.ejs     # Rodape reutilizavel
@@ -92,8 +97,10 @@ help-systems/
 
 - [x] Cadastro de usuario com validacao de e-mail e criptografia de senha
 - [x] Login e logout com sessao
-- [ ] Tela inicial
-- [ ] Criar solicitacoes
+- [x] Tela inicial com nome/departamento do usuario e botoes de acesso
+- [x] Criar solicitacoes (perguntas)
+- [x] Listagem de solicitacoes na tela inicial
+- [x] Deploy no Railway
 - [ ] Responder solicitacoes
-- [ ] Listar solicitacoes
-- [ ] Gerenciamento de solicitacoes
+- [ ] Filtros e ordenacao na listagem
+- [ ] Gerenciamento de solicitacoes (status, duplicidade)
