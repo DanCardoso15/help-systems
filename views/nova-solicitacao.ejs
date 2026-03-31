@@ -1,0 +1,26 @@
+<%- include('partials/header') %>
+
+<h2>Registrar Pergunta</h2>
+
+<% if (erro) { %>
+    <p style="color: red;"><%= erro %></p>
+<% } %>
+<% if (sucesso) { %>
+    <p style="color: green;"><%= sucesso %></p>
+<% } %>
+
+<form method="POST" action="/solicitacoes/nova">
+    <div>
+        <label for="titulo_pergunta">Titulo da Pergunta</label>
+        <input type="text" id="titulo_pergunta" name="titulo_pergunta" required>
+    </div>
+    <div>
+        <label for="pergunta">Pergunta</label>
+        <textarea id="pergunta" name="pergunta" rows="5" required></textarea>
+    </div>
+    <button type="submit">Enviar</button>
+</form>
+
+<a href="/home">Voltar</a>
+
+<%- include('partials/footer') %>
