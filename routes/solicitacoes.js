@@ -29,7 +29,7 @@ router.post('/solicitacoes/nova', async (req, res) => {
     try {
         // RF03.3: Salvar no banco
         await pool.query(
-            'INSERT INTO Solicitacoes (titulo_pergunta, pergunta, nome, departamento, usuario_id) VALUES (?, ?, ?, ?, ?)',
+            'INSERT INTO solicitacoes (titulo_pergunta, pergunta, nome, departamento, usuario_id) VALUES (?, ?, ?, ?, ?)',
             [titulo_pergunta, pergunta, req.session.usuario.nome, req.session.usuario.departamento, req.session.usuario.id]
         );
 
