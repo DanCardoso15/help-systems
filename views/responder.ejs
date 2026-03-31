@@ -1,0 +1,29 @@
+<%- include('partials/header') %>
+
+<h2>Responder Solicitacao</h2>
+
+<div>
+    <p><strong>Titulo:</strong> <%= solicitacao.titulo_pergunta %></p>
+    <p><strong>Pergunta:</strong> <%= solicitacao.pergunta %></p>
+    <p><strong>Colaborador:</strong> <%= solicitacao.nome %></p>
+    <p><strong>Departamento:</strong> <%= solicitacao.departamento %></p>
+</div>
+
+<% if (erro) { %>
+    <p style="color: red;"><%= erro %></p>
+<% } %>
+<% if (sucesso) { %>
+    <p style="color: green;"><%= sucesso %></p>
+<% } %>
+
+<form method="POST" action="/respostas/<%= solicitacao.IDsolicitacao %>">
+    <div>
+        <label for="resposta">Sua Resposta</label>
+        <textarea id="resposta" name="resposta" rows="5" required></textarea>
+    </div>
+    <button type="submit">Enviar Resposta</button>
+</form>
+
+<a href="/respostas">Voltar</a>
+
+<%- include('partials/footer') %>

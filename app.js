@@ -28,9 +28,11 @@ app.use((req, res, next) => {
 const authRoutes = require('./routes/auth');
 const homeRoutes = require('./routes/home');
 const solicitacoesRoutes = require('./routes/solicitacoes');
+const respostasRoutes = require('./routes/respostas');
 app.use('/', authRoutes);
 app.use('/', homeRoutes);
 app.use('/', solicitacoesRoutes);
+app.use('/', respostasRoutes);
 
 app.get('/', (req, res) => {
     if (!req.session.usuario) {
