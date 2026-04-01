@@ -1,29 +1,35 @@
 <%- include('partials/header') %>
 
-<h2>Responder Solicitacao</h2>
+<div class="w-full h-screen flex flex-col justify-center items-center gap-5">
+    <h1 class="font-display text-3xl">Registrar Pergunta</h1>
+    <div class="w-3/5 flex flex-col justify-center bg-slate-100">
 
-<div>
-    <p><strong>Titulo:</strong> <%= solicitacao.titulo_pergunta %></p>
-    <p><strong>Pergunta:</strong> <%= solicitacao.pergunta %></p>
-    <p><strong>Colaborador:</strong> <%= solicitacao.nome %></p>
-    <p><strong>Departamento:</strong> <%= solicitacao.departamento %></p>
-</div>
+        <% if (erro) { %>
+            <p class="bg-red-100 pl-1 rounded border-solid border-l-4 border-red-500 font-semibold text-lg mb-3"><%= erro %></p>
+        <% } %>
+        <% if (sucesso) { %>
+            <p class="bg-green-100 pl-1 rounded border-solid border-l-4 border-green-500 font-semibold text-lg mb-3"><%= sucesso %></p>
+        <% } %>
 
-<% if (erro) { %>
-    <p style="color: red;"><%= erro %></p>
-<% } %>
-<% if (sucesso) { %>
-    <p style="color: green;"><%= sucesso %></p>
-<% } %>
-
-<form method="POST" action="/respostas/<%= solicitacao.IDsolicitacao %>">
-    <div>
-        <label for="resposta">Sua Resposta</label>
-        <textarea id="resposta" name="resposta" rows="5" required></textarea>
+        <div class="flex flex-col gap-8 text-lg items-center py-10">
+            <div>
+                <p><strong>Titulo:</strong> <%= solicitacao.titulo_pergunta %></p>
+                <p><strong>Pergunta:</strong> <%= solicitacao.pergunta %></p>
+                <p><strong>Colaborador:</strong> <%= solicitacao.nome %></p>
+                <p><strong>Departamento:</strong> <%= solicitacao.departamento %></p>
+            </div>
+            <form method="POST" action="/respostas/<%= solicitacao.IDsolicitacao %>" class="w-3/4 flex flex-col gap-4">
+                <div class="flex flex-col gap-4 justify-between">
+                    <label for="resposta">Sua Resposta</label>
+                    <textarea id="resposta" name="resposta" rows="5" required class="px-1 rounded border-2 border-solid border-slate-300 w-3/4 h-3/5"></textarea>
+                </div>
+                <div class="flex justify-center mt-5 gap-8">
+                    <button type="submit" class="px-20 py-3 bg-emerald-500 text-white font-bold font-display rounded">Enviar Resposta</button>
+                    <a href="/respostas" class="px-10 py-3 bg-slate-600 text-white font-bold text-xl rounded">Voltar</a>
+                </div>
+            </form>
+        </div>
     </div>
-    <button type="submit">Enviar Resposta</button>
-</form>
-
-<a href="/respostas">Voltar</a>
+</div>
 
 <%- include('partials/footer') %>
