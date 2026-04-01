@@ -1,48 +1,56 @@
 <%- include('partials/header') %>
 
-<h2>Cadastro</h2>
+<div class="w-full h-screen flex justify-center items-center">
+    <div class="w-3/4 flex flex-col place-content-center">
+        <h2 class="text-center text-3xl font-bold">Cadastro</h2>
+        <div class="w-2/6 mx-auto my-6">
+            <% if (erro) { %>
+                <p class="bg-red-100 pl-1 rounded border-solid border-l-4 border-red-500 font-semibold text-lg mb-3"><%= erro %></p>
+            <% } %>
+            <% if (sucesso) { %>
+                <p class="bg-green-100 pl-1 rounded border-solid border-l-4 border-green-500 font-semibold text-lg mb-3"><%= sucesso %></p>
+            <% } %>
 
-<% if (erro) { %>
-    <p style="color: red;"><%= erro %></p>
-<% } %>
-<% if (sucesso) { %>
-    <p style="color: green;"><%= sucesso %></p>
-<% } %>
+            <form method="POST" action="/cadastro" class="flex flex-col gap-4 text-2xl">
+                <div class="flex gap-4 justify-between">
+                    <label for="nome">Nome completo</label>
+                    <input type="text" id="nome" name="nome" required class="px-1 bg-slate-50 rounded border">
+                </div>
+                <div class="flex gap-4 justify-between">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required placeholder="seu@email.com" class="px-1 bg-slate-50 rounded border">
+                </div>
+                <div class="flex gap-4 justify-between">
+                    <label for="departamento">Departamento</label>
+                    <select id="departamento" name="departamento" required class="px-2 py-1 bg-slate-200 border-2 border-solid border-slate-300 rounded">
+                        <option value="">Selecione...</option>
+                        <option value="TI">TI</option>
+                        <option value="RH">RH</option>
+                        <option value="Financeiro">Financeiro</option>
+                        <option value="Comercial">Comercial</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Operacoes">Operações</option>
+                        <option value="Juridico">Jurídico</option>
+                    </select>
+                </div>
+                <div class="flex gap-4 justify-between">
+                    <label for="senha">Senha</label>
+                    <div class="flex flex-col">
+                        <input type="password" id="senha" name="senha" required minlength="6" class="px-1 bg-slate-50 rounded border">
+                        <small class="text-sm text-right">Mínimo 6 caracteres</small>
+                    </div>
+                    
+                </div>
+                <div class="flex gap-4 justify-between">
+                    <label for="confirmarSenha">Confirmar senha</label>
+                    <input type="password" id="confirmarSenha" name="confirmarSenha" required class="px-1 bg-slate-50 rounded border">
+                </div>
+                <button type="submit" class="w-full py-3 bg-purple-800 text-white font-bold font-display rounded mt-5">Cadastrar</button>
+            </form>
 
-<form method="POST" action="/cadastro">
-    <div>
-        <label for="nome">Nome completo</label>
-        <input type="text" id="nome" name="nome" required>
+            <p>Já tem conta? <a href="/login">Faça login</a></p>
+        </div>
     </div>
-    <div>
-        <label for="email">E-mail</label>
-        <input type="email" id="email" name="email" required placeholder="seu@email.com">
-    </div>
-    <div>
-        <label for="departamento">Departamento</label>
-        <select id="departamento" name="departamento" required>
-            <option value="">Selecione...</option>
-            <option value="TI">TI</option>
-            <option value="RH">RH</option>
-            <option value="Financeiro">Financeiro</option>
-            <option value="Comercial">Comercial</option>
-            <option value="Marketing">Marketing</option>
-            <option value="Operacoes">Operacoes</option>
-            <option value="Juridico">Juridico</option>
-        </select>
-    </div>
-    <div>
-        <label for="senha">Senha</label>
-        <input type="password" id="senha" name="senha" required minlength="6">
-        <small>Minimo 6 caracteres</small>
-    </div>
-    <div>
-        <label for="confirmarSenha">Confirmar senha</label>
-        <input type="password" id="confirmarSenha" name="confirmarSenha" required>
-    </div>
-    <button type="submit">Cadastrar</button>
-</form>
-
-<p>Ja tem conta? <a href="/login">Faca login</a></p>
+</div>
 
 <%- include('partials/footer') %>
