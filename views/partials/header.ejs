@@ -21,9 +21,9 @@
                 width="328"
                 height="70"/></a></h1>
             <% if (usuario) { %>
-                <span class="text-lg font-bold">Boas vindas, <%= usuario.nome %><br/>
+                <span class="text-xl font-bold">Boas vindas, <%= usuario.nome %><br/>
                     — <%= usuario.departamento %></span>
-                <a href="/logout">Sair</a>
+                <a href="/logout" class="text-3xl font-bold px-2 py-1 bg-purple-900">Sair</a>
             <% } %>
         </div>
     </nav>
