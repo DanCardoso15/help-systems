@@ -11,14 +11,14 @@
         </div>
         
         <!-- RF02.2: Botoes de acesso -->
-        <div class="flex gap-4 text-lg">
-            <a href="/solicitacoes/nova"><button class="px-6 py-2 bg-sky-500 text-white font-bold font-display rounded mt-5">Tenho Dúvida</button></a>
-            <a href="/respostas"><button class="px-6 py-2 bg-emerald-600 text-white font-bold font-display rounded mt-5">Quero responder</button></a>
+        <div class="w-full flex gap-4 text-lg flex-row-reverse">
             <a href="/ver-respostas" class="px-4 py-2 bg-amber-300 text-white font-bold font-display rounded mt-5"><button>Ver Respostas</button></a>
+            <a href="/respostas"><button class="px-6 py-2 bg-emerald-600 text-white font-bold font-display rounded mt-5">Quero responder</button></a>
+            <a href="/solicitacoes/nova"><button class="px-6 py-2 bg-sky-500 text-white font-bold font-display rounded mt-5">Tenho Dúvida</button></a>
         </div>
         
         <!-- RF05.2: Filtros -->
-        <h3>Solicitações</h3>
+        <h3 class="font-display text-2xl">Solicitações</h3>
         
         <div class="flex flex-col gap-8">
             <form method="GET" action="/home" class="flex gap-4">
@@ -75,7 +75,7 @@
     <% } else { %>
         <table border="1" cellpadding="8" cellspacing="0" class="px-5 py-3 bg-slate-200 rounded mt-5">
             <thead class="text-lg rounded text-center font-semibold font-display x-3 py-2">
-                <tr>
+                <tr class="bg-purple-200 border-solid border-r-4 border-white">
                     <th>Titulo</th>
                     <th>Pergunta</th>
                     <th>Colaborador</th>
@@ -89,12 +89,12 @@
                 <% solicitacoes.forEach(s => { %>
                     <tr>
                         <td class="font-semibold"><%= s.titulo_pergunta %></td>
-                        <td class="text-slate-700 bg-slate-300"><%= s.pergunta %></td>
-                        <td><%= s.nome %></td>
-                        <td><%= s.departamento %></td>
-                        <td><%= s.categoria || '' %></td>
-                        <td><%= s.status || 'aberto' %></td>
-                        <td><%= s.data_criacao ? new Date(s.data_criacao).toLocaleDateString('pt-BR') : '' %></td>
+                        <td class="text-slate-700"><%= s.pergunta %></td>
+                        <td class="border-b-3 border-slate-800 border solid"><%= s.nome %></td>
+                        <td class="border-b-3 border-slate-800 border solid"><%= s.departamento %></td>
+                        <td class="border-b-3 border-slate-800 border solid"><%= s.categoria || '' %></td>
+                        <td class="border-b-3 border-slate-800 border solid"><%= s.status || 'aberto' %></td>
+                        <td class="border-b-3 border-slate-800 border solid"><%= s.data_criacao ? new Date(s.data_criacao).toLocaleDateString('pt-BR') : '' %></td>
                     </tr>
                 <% }) %>
             </tbody>
