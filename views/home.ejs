@@ -1,6 +1,6 @@
 <%- include('partials/header') %>
 
-<div class="w-full h-screen flex flex-col justify-center align-center">
+<div class="w-full h-screen flex flex-col justify-center items-center">
     <div class="w-4/5">
         <h1>Dashboard</h1>
         
@@ -22,15 +22,15 @@
         
         <div class="flex flex-col gap-8 text-lg">
             <form method="GET" action="/home" class="flex gap-4">
-                <div class="flex gap-3">
-                    <label for="titulo">Titulo</label>
+                <div class="flex gap-3 items-center">
+                    <label for="titulo">Título</label>
                     <input type="text" id="titulo" name="titulo" value="<%= filtros.titulo %>" placeholder="Buscar por titulo" class="px-1 bg-slate-50 rounded border">
                 </div>
-                <div class="flex gap-3">
+                <div class="flex gap-3 items-center">
                     <label for="colaborador">Nome</label>
                     <input type="text" id="colaborador" name="colaborador" value="<%= filtros.colaborador %>" placeholder="Buscar por colaborador" class="px-1 bg-slate-50 rounded border">
                 </div>
-                <div class="flex gap-3">
+                <div class="flex gap-3 items-center">
                     <label for="departamento">Departamento</label>
                     <select id="departamento" name="departamento" class="px-2 bg-slate-200 border-2 border-solid border-slate-300 rounded">
                         <option value="">Todos</option>
@@ -43,7 +43,7 @@
                         <option value="Juridico" <%= filtros.departamento === 'Juridico' ? 'selected' : '' %>>Juridico</option>
                     </select>
                 </div>
-                <div class="flex gap-3">
+                <div class="flex gap-3 items-center">
                     <label for="categoria">Destino</label>
                     <select id="categoria" name="categoria" class="px-2 py-1 bg-slate-200 border-2 border-solid border-slate-300 rounded">
                         <option value="">Todos</option>
@@ -57,7 +57,7 @@
                     </select>
                 </div>
                 <!-- RF05.3: Ordenacao -->
-                <div class="flex gap-3">
+                <div class="flex gap-3 items-center">
                     <label for="ordem">Ordem</label>
                     <select id="ordem" name="ordem" class="px-2 bg-slate-200 border-2 border-solid border-slate-300 rounded">
                         <option value="desc" <%= filtros.ordem === 'desc' ? 'selected' : '' %>>Mais recentes</option>
@@ -75,14 +75,14 @@
     <% } else { %>
         <table border="1" cellpadding="8" cellspacing="0" class="px-5 py-3 bg-slate-200 rounded mt-5">
             <thead class="text-lg rounded text-center font-semibold font-display x-3 py-2">
-                <tr class="bg-purple-200 border-solid border-r-4 border-white">
-                    <th>Titulo</th>
-                    <th>Pergunta</th>
-                    <th>Colaborador</th>
-                    <th>Departamento</th>
-                    <th>Destino</th>
-                    <th>Status</th>
-                    <th>Data</th>
+                <tr class="bg-slate-300 border-solid border-b-4 border-purple-800">
+                    <th class="border-solid border-r-3 border-white">Titulo</th>
+                    <th class="border-solid border-r-3 border-white">Pergunta</th>
+                    <th class="border-solid border-r-3 border-white">Colaborador</th>
+                    <th class="border-solid border-r-3 border-white">Departamento</th>
+                    <th class="border-solid border-r-3 border-white">Destino</th>
+                    <th class="border-solid border-r-3 border-white">Status</th>
+                    <th class="border-solid border-r-3 border-white">Data</th>
                 </tr>
             </thead>
             <tbody>
@@ -90,11 +90,11 @@
                     <tr>
                         <td class="font-semibold"><%= s.titulo_pergunta %></td>
                         <td class="text-slate-700"><%= s.pergunta %></td>
-                        <td class="border-b-3 border-slate-800 border solid"><%= s.nome %></td>
-                        <td class="border-b-3 border-slate-800 border solid"><%= s.departamento %></td>
-                        <td class="border-b-3 border-slate-800 border solid"><%= s.categoria || '' %></td>
-                        <td class="border-b-3 border-slate-800 border solid"><%= s.status || 'aberto' %></td>
-                        <td class="border-b-3 border-slate-800 border solid"><%= s.data_criacao ? new Date(s.data_criacao).toLocaleDateString('pt-BR') : '' %></td>
+                        <td class="border-b-3 border-slate-800 border-solid"><%= s.nome %></td>
+                        <td class="border-b-3 border-slate-800 border-solid"><%= s.departamento %></td>
+                        <td class="border-b-3 border-slate-800 border-solid"><%= s.categoria || '' %></td>
+                        <td class="border-b-3 border-slate-800 border-solid"><%= s.status || 'aberto' %></td>
+                        <td class="border-b-3 border-slate-800 border-solid"><%= s.data_criacao ? new Date(s.data_criacao).toLocaleDateString('pt-BR') : '' %></td>
                     </tr>
                 <% }) %>
             </tbody>
