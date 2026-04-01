@@ -1,39 +1,43 @@
 <%- include('partials/header') %>
 
-<h2>Registrar Pergunta</h2>
-
-<% if (erro) { %>
-    <p style="color: red;"><%= erro %></p>
-<% } %>
-<% if (sucesso) { %>
-    <p style="color: green;"><%= sucesso %></p>
-<% } %>
-
-<form method="POST" action="/solicitacoes/nova">
-    <div>
-        <label for="categoria">Departamento Destino</label>
-        <select id="categoria" name="categoria" required>
-            <option value="">Selecione o departamento</option>
-            <option value="TI">TI</option>
-            <option value="RH">RH</option>
-            <option value="Financeiro">Financeiro</option>
-            <option value="Comercial">Comercial</option>
-            <option value="Marketing">Marketing</option>
-            <option value="Operacoes">Operacoes</option>
-            <option value="Juridico">Juridico</option>
-        </select>
+<div class="w-full h-screen flex flex-col justify-center items-center">
+    <div class="w-4/5 flex flex-col justify-center">
+        <h1 class="font-display text-3xl">Registrar Pergunta</h1>
+    
+        <% if (erro) { %>
+            <p class="bg-red-100 pl-1 rounded border-solid border-l-4 border-red-500 font-semibold text-lg mb-3"><%= erro %></p>
+        <% } %>
+        <% if (sucesso) { %>
+            <p class="bg-green-100 pl-1 rounded border-solid border-l-4 border-green-500 font-semibold text-lg mb-3"><%= sucesso %></p>
+        <% } %>
+    
+        <form method="POST" action="/solicitacoes/nova">
+            <div class="flex gap-4 justify-between">
+                <label for="categoria">Departamento Destino</label>
+                <select id="categoria" name="categoria" required class="px-2 py-1 bg-slate-200 border-2 border-solid border-slate-300 rounded">
+                    <option value="">Selecione o departamento</option>
+                    <option value="TI">TI</option>
+                    <option value="RH">RH</option>
+                    <option value="Financeiro">Financeiro</option>
+                    <option value="Comercial">Comercial</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Operacoes">Operacoes</option>
+                    <option value="Juridico">Juridico</option>
+                </select>
+            </div>
+            <div class="flex gap-4 justify-between">
+                <label for="titulo_pergunta">Titulo da Pergunta</label>
+                <input type="text" id="titulo_pergunta" name="titulo_pergunta" required>
+            </div>
+            <div class="flex gap-4 justify-between">
+                <label for="pergunta">Pergunta</label>
+                <textarea id="pergunta" name="pergunta" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="w-full py-3 bg-purple-800 text-white font-bold font-display rounded mt-5">Enviar</button>
+        </form>
+    
+        <a href="/home" class="w-full py-3 bg-slate-800 text-white font-bold font-display rounded mt-5">Voltar</a>
     </div>
-    <div>
-        <label for="titulo_pergunta">Titulo da Pergunta</label>
-        <input type="text" id="titulo_pergunta" name="titulo_pergunta" required>
-    </div>
-    <div>
-        <label for="pergunta">Pergunta</label>
-        <textarea id="pergunta" name="pergunta" rows="5" required></textarea>
-    </div>
-    <button type="submit">Enviar</button>
-</form>
-
-<a href="/home">Voltar</a>
+</div>
 
 <%- include('partials/footer') %>
