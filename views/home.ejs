@@ -3,11 +3,11 @@
 <div class="w-full h-screen flex flex-col justify-center items-center">
     <div class="w-4/5 flex flex-col justify-center">
         <div>
-            <h1>Dashboard</h1>
+            <h1 class="text-4xl font-display">Dashboard</h1>
         
             <!-- RF02.3: Nome e departamento do usuario -->
-            <div>
-                <p><strong>Usuario:</strong> <%= usuario.nome %></p>
+            <div class="bg-slate-100 flex flex-row-reverse text-2xl gap-8 px-8 py-4">
+                <p><strong>Usuário:</strong> <%= usuario.nome %></p>
                 <p><strong>Departamento:</strong> <%= usuario.departamento %></p>
             </div>
         
@@ -21,7 +21,7 @@
             <!-- RF05.2: Filtros -->
             <h3 class="font-display text-3xl">Solicitações</h3>
         
-            <div class="flex flex-col gap-8 text-lg">
+            <div class="flex flex-col gap-8 text-lg items-center">
                 <form method="GET" action="/home" class="flex gap-4">
                     <div class="flex gap-3 items-center">
                         <label for="titulo">Título</label>
@@ -65,8 +65,8 @@
                             <option value="asc" <%= filtros.ordem === 'asc' ? 'selected' : '' %>>Mais antigos</option>
                         </select>
                     </div>
-                    <button type="submit" class="px-5 bg-purple-800 text-white font-bold font-display rounded mt-5">Filtrar</button>
-                    <a href="/home" class="px-5 bg-slate-400 text-white font-bold font-display rounded mt-5">Limpar</a>
+                    <button type="submit" class="px-6 py-3 bg-purple-800 text-white font-bold font-display rounded">Filtrar</button>
+                    <a href="/home" class="px-6 py-3 bg-slate-400 text-white font-bold font-display rounded">Limpar</a>
                 </form>
             </div>
         </div>
@@ -75,7 +75,7 @@
             <p>Nenhuma solicitação encontrada.</p>
         <% } else { %>
             <table border="1" cellpadding="8" cellspacing="0" class="px-5 py-3 bg-slate-200 rounded mt-5">
-                <thead class="text-lg rounded text-center font-semibold font-display x-3 py-2">
+                <thead class="text-lg rounded text-center font-semibold font-display">
                     <tr class="bg-slate-300 border-solid border-b-4 border-purple-800">
                         <th>Titulo</th>
                         <th>Pergunta</th>
@@ -88,13 +88,13 @@
                 </thead>
                 <tbody>
                     <% solicitacoes.forEach(s => { %>
-                        <tr class="border-b-3 border-slate-800 border-solid">
+                        <tr>
                             <td class="font-semibold"><%= s.titulo_pergunta %></td>
                             <td class="text-slate-700"><%= s.pergunta %></td>
                             <td><%= s.nome %></td>
                             <td class="text-center"><%= s.departamento %></td>
-                            <td><%= s.categoria || '' %></td>
-                            <td><%= s.status || 'aberto' %></td>
+                            <td class="text-center"><%= s.categoria || '' %></td>
+                            <td class="text-center"><%= s.status || 'aberto' %></td>
                             <td><%= s.data_criacao ? new Date(s.data_criacao).toLocaleDateString('pt-BR') : '' %></td>
                         </tr>
                     <% }) %>
