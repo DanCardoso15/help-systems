@@ -9,17 +9,47 @@ router.get('/home', async (req, res) => {
     }
 
     try {
-        // RF02.4: Listagem de solicitacoes
-        const [solicitacoes] = await pool.query(
-            `SELECT s.IDsolicitacao, s.titulo_pergunta, s.pergunta, s.departamento, s.nome
-             FROM solicitacoes s
-             ORDER BY s.IDsolicitacao DESC`
-        );
+        const { departamento, titulo, colaborador, ordem } = req.query;
 
-        res.render('home', { solicitacoes });
+        let sql = `SELECT s.IDsolicitacao, s.titulo_pergunta, s.pergunta, s.departamento, s.nome, s.data_criacao
+                    FROM solicitacoes s WHERE 1=1`;
+        const params = [];
+
+        // RF05.2: Filtros
+        if (departamento) {
+            sql += ' AND s.departamento = ?';
+            params.push(departamento);
+        }
+
+        if (titulo) {
+            sql += ' AND s.titulo_pergunta LIKE ?';
+            params.push(`%${titulo}%`);
+        }
+
+        if (colaborador) {
+            sql += ' AND s.nome LIKE ?';
+            params.push(`%${colaborador}%`);
+        }
+
+        // RF05.3: Ordenacao
+        if (ordem === 'asc') {
+            sql += ' ORDER BY s.data_criacao ASC';
+        } else {
+            sql += ' ORDER BY s.data_criacao DESC';
+        }
+
+        const [solicitacoes] = await pool.query(sql, params);
+
+        res.render('home', {
+            solicitacoes,
+            filtros: { departamento: departamento || '', titulo: titulo || '', colaborador: colaborador || '', ordem: ordem || 'desc' }
+        });
     } catch (err) {
         console.error(err);
-        res.render('home', { solicitacoes: [] });
+        res.render('home', {
+            solicitacoes: [],
+            filtros: { departamento: '', titulo: '', colaborador: '', ordem: 'desc' }
+        });
     }
 });
 
