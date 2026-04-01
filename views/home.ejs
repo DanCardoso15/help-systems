@@ -14,8 +14,40 @@
     <a href="/respostas"><button>Registrar Resposta</button></a>
 </div>
 
-<!-- RF02.4: Listagem de solicitacoes -->
+<!-- RF05.2: Filtros -->
 <h3>Solicitacoes</h3>
+
+<form method="GET" action="/home">
+    <div>
+        <label for="titulo">Titulo:</label>
+        <input type="text" id="titulo" name="titulo" value="<%= filtros.titulo %>" placeholder="Buscar por titulo">
+
+        <label for="colaborador">Colaborador:</label>
+        <input type="text" id="colaborador" name="colaborador" value="<%= filtros.colaborador %>" placeholder="Buscar por colaborador">
+
+        <label for="departamento">Departamento:</label>
+        <select id="departamento" name="departamento">
+            <option value="">Todos</option>
+            <option value="TI" <%= filtros.departamento === 'TI' ? 'selected' : '' %>>TI</option>
+            <option value="RH" <%= filtros.departamento === 'RH' ? 'selected' : '' %>>RH</option>
+            <option value="Financeiro" <%= filtros.departamento === 'Financeiro' ? 'selected' : '' %>>Financeiro</option>
+            <option value="Comercial" <%= filtros.departamento === 'Comercial' ? 'selected' : '' %>>Comercial</option>
+            <option value="Marketing" <%= filtros.departamento === 'Marketing' ? 'selected' : '' %>>Marketing</option>
+            <option value="Operacoes" <%= filtros.departamento === 'Operacoes' ? 'selected' : '' %>>Operacoes</option>
+            <option value="Juridico" <%= filtros.departamento === 'Juridico' ? 'selected' : '' %>>Juridico</option>
+        </select>
+
+        <!-- RF05.3: Ordenacao -->
+        <label for="ordem">Ordem:</label>
+        <select id="ordem" name="ordem">
+            <option value="desc" <%= filtros.ordem === 'desc' ? 'selected' : '' %>>Mais recentes</option>
+            <option value="asc" <%= filtros.ordem === 'asc' ? 'selected' : '' %>>Mais antigos</option>
+        </select>
+
+        <button type="submit">Filtrar</button>
+        <a href="/home">Limpar</a>
+    </div>
+</form>
 
 <% if (solicitacoes.length === 0) { %>
     <p>Nenhuma solicitacao encontrada.</p>
@@ -27,6 +59,7 @@
                 <th>Pergunta</th>
                 <th>Colaborador</th>
                 <th>Departamento</th>
+                <th>Data</th>
             </tr>
         </thead>
         <tbody>
@@ -36,6 +69,7 @@
                     <td><%= s.pergunta %></td>
                     <td><%= s.nome %></td>
                     <td><%= s.departamento %></td>
+                    <td><%= s.data_criacao ? new Date(s.data_criacao).toLocaleDateString('pt-BR') : '' %></td>
                 </tr>
             <% }) %>
         </tbody>
