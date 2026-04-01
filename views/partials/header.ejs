@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
@@ -15,7 +16,7 @@
         <div class="w-4/5 px-8 py-6 flex justify-between">
             <h1 class="text-4xl font-display"><a href="/">Help System</a></h1>
             <% if (usuario) { %>
-                <span><%= usuario.nome %> — <%= usuario.departamento %></span>
+                <span class="text-lg"><%= usuario.nome %> — <%= usuario.departamento %></span>
                 <a href="/logout">Sair</a>
             <% } %>
         </div>
