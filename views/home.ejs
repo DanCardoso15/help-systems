@@ -1,7 +1,6 @@
 <%- include('partials/header') %>
 
-<<<<<<< HEAD
-<div class="w-full h-screen flex justify-center items-center">
+<div class="w-full h-screen flex flex-col justify-center items-center">
     <div>
         <h1>Dashboard</h1>
         
@@ -65,8 +64,8 @@
                         <option value="asc" <%= filtros.ordem === 'asc' ? 'selected' : '' %>>Mais antigos</option>
                     </select>
                 </div>
-                <button type="submit" class="px-5 py-3 bg-purple-800 text-white font-bold font-display rounded mt-5">Filtrar</button>
-                <a href="/home" class="px-5 py-3 bg-slate-400 text-white font-bold font-display rounded mt-5">Limpar</a>
+                <button type="submit" class="px-5 py-13 bg-purple-800 text-white font-bold font-display rounded mt-5">Filtrar</button>
+                <a href="/home" class="px-5 py-1 bg-slate-400 text-white font-bold font-display rounded mt-5">Limpar</a>
             </form>
         </div>
     </div>
@@ -74,8 +73,8 @@
     <% if (solicitacoes.length === 0) { %>
         <p>Nenhuma solicitacao encontrada.</p>
     <% } else { %>
-        <table border="1" cellpadding="8" cellspacing="0" class="px-5 py-3 bg-slate-200 text-white font-bold font-display rounded mt-5">
-            <thead class="text-lg rounded text-center px-3 py-2">
+        <table border="1" cellpadding="8" cellspacing="0" class="px-5 py-3 bg-slate-200 rounded mt-5">
+            <thead class="text-lg rounded text-center font-semibold font-display x-3 py-2">
                 <tr>
                     <th>Titulo</th>
                     <th>Pergunta</th>
