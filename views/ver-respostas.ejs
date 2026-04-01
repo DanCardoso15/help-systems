@@ -1,0 +1,36 @@
+<%- include('partials/header') %>
+
+<h2>Respostas</h2>
+
+<% if (respostas.length === 0) { %>
+    <p>Nenhuma resposta encontrada.</p>
+<% } else { %>
+    <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Pergunta</th>
+                <th>Solicitante</th>
+                <th>Destino</th>
+                <th>Resposta</th>
+                <th>Respondido por</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% respostas.forEach(r => { %>
+                <tr>
+                    <td><%= r.titulo_pergunta %></td>
+                    <td><%= r.pergunta %></td>
+                    <td><%= r.solicitante || '' %></td>
+                    <td><%= r.categoria || '' %></td>
+                    <td><%= r.resposta %></td>
+                    <td><%= r.respondido_por || '' %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+<% } %>
+
+<a href="/home">Voltar</a>
+
+<%- include('partials/footer') %>

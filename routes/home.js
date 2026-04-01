@@ -11,7 +11,7 @@ router.get('/home', async (req, res) => {
     try {
         const { departamento, titulo, colaborador, categoria, ordem } = req.query;
 
-        let sql = `SELECT s.IDsolicitacao, s.titulo_pergunta, s.pergunta, s.departamento, s.nome, s.categoria, s.data_criacao
+        let sql = `SELECT s.IDsolicitacao, s.titulo_pergunta, s.pergunta, s.departamento, s.nome, s.categoria, s.status, s.data_criacao
                     FROM solicitacoes s WHERE 1=1`;
         const params = [];
 

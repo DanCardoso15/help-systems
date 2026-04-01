@@ -12,6 +12,7 @@
 <div>
     <a href="/solicitacoes/nova"><button>Registrar Pergunta</button></a>
     <a href="/respostas"><button>Registrar Resposta</button></a>
+    <a href="/ver-respostas"><button>Ver Respostas</button></a>
 </div>
 
 <!-- RF05.2: Filtros -->
@@ -72,6 +73,7 @@
                 <th>Colaborador</th>
                 <th>Departamento</th>
                 <th>Destino</th>
+                <th>Status</th>
                 <th>Data</th>
             </tr>
         </thead>
@@ -83,6 +85,7 @@
                     <td><%= s.nome %></td>
                     <td><%= s.departamento %></td>
                     <td><%= s.categoria || '' %></td>
+                    <td><%= s.status || 'aberto' %></td>
                     <td><%= s.data_criacao ? new Date(s.data_criacao).toLocaleDateString('pt-BR') : '' %></td>
                 </tr>
             <% }) %>

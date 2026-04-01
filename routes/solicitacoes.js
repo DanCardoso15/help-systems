@@ -27,6 +27,19 @@ router.post('/solicitacoes/nova', async (req, res) => {
     }
 
     try {
+        // RF06.1: Validar duplicidade de categoria
+        const [existente] = await pool.query(
+            'SELECT IDsolicitacao FROM solicitacoes WHERE titulo_pergunta = ? AND categoria = ?',
+            [titulo_pergunta, categoria]
+        );
+
+        if (existente.length > 0) {
+            return res.render('nova-solicitacao', {
+                erro: 'Ja existe uma solicitacao com este titulo nesta categoria.',
+                sucesso: null
+            });
+        }
+
         // RF03.3: Salvar no banco
         await pool.query(
             'INSERT INTO solicitacoes (titulo_pergunta, pergunta, nome, departamento, categoria, usuario_id) VALUES (?, ?, ?, ?, ?, ?)',
