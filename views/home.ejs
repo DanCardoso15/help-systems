@@ -11,10 +11,10 @@
         </div>
         
         <!-- RF02.2: Botoes de acesso -->
-        <div>
-            <a href="/solicitacoes/nova"><button class="w-full py-3 bg-sky-500 text-white font-bold font-display rounded mt-5">Tenho Dúvida</button></a>
-            <a href="/respostas"><button class="w-full py-3 bg-emerald-800 text-white font-bold font-display rounded mt-5">Quero responder</button></a>
-            <a href="/ver-respostas" class="w-full py-3 bg-emerald-800 text-white font-bold font-display rounded mt-5"><button>Ver Respostas</button></a>
+        <div class="flex gap-4 text-lg">
+            <a href="/solicitacoes/nova"><button class="w-3/8 px-4 py-2 bg-sky-500 text-white font-bold font-display rounded mt-5">Tenho Dúvida</button></a>
+            <a href="/respostas"><button class="w-3/8 px-4 py-2 bg-emerald-600 text-white font-bold font-display rounded mt-5">Quero responder</button></a>
+            <a href="/ver-respostas" class="w-2/8 px-4 py-2 bg-amber-300 text-white font-bold font-display rounded mt-5"><button>Ver Respostas</button></a>
         </div>
         
         <!-- RF05.2: Filtros -->
@@ -32,7 +32,7 @@
                 </div>
                 <div class="flex gap-3">
                     <label for="departamento">Departamento</label>
-                    <select id="departamento" name="departamento" class="px-2 py-1 bg-slate-200 border-2 border-solid border-slate-300 rounded">
+                    <select id="departamento" name="departamento" class="px-2 bg-slate-200 border-2 border-solid border-slate-300 rounded">
                         <option value="">Todos</option>
                         <option value="TI" <%= filtros.departamento === 'TI' ? 'selected' : '' %>>TI</option>
                         <option value="RH" <%= filtros.departamento === 'RH' ? 'selected' : '' %>>RH</option>
@@ -64,14 +64,14 @@
                         <option value="asc" <%= filtros.ordem === 'asc' ? 'selected' : '' %>>Mais antigos</option>
                     </select>
                 </div>
-                <button type="submit" class="px-5 py-13 bg-purple-800 text-white font-bold font-display rounded mt-5">Filtrar</button>
+                <button type="submit" class="px-5 py-1 bg-purple-800 text-white font-bold font-display rounded mt-5">Filtrar</button>
                 <a href="/home" class="px-5 py-1 bg-slate-400 text-white font-bold font-display rounded mt-5">Limpar</a>
             </form>
         </div>
     </div>
     
     <% if (solicitacoes.length === 0) { %>
-        <p>Nenhuma solicitacao encontrada.</p>
+        <p>Nenhuma solicitação encontrada.</p>
     <% } else { %>
         <table border="1" cellpadding="8" cellspacing="0" class="px-5 py-3 bg-slate-200 rounded mt-5">
             <thead class="text-lg rounded text-center font-semibold font-display x-3 py-2">
