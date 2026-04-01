@@ -1,7 +1,7 @@
 <%- include('partials/header') %>
 
 <div class="w-full h-screen flex flex-col justify-center items-center">
-    <div class="w-4/5">
+    <div class="w-4/5 flex flex-col justify-center">
         <div>
             <h1>Dashboard</h1>
         
@@ -77,25 +77,25 @@
             <table border="1" cellpadding="8" cellspacing="0" class="px-5 py-3 bg-slate-200 rounded mt-5">
                 <thead class="text-lg rounded text-center font-semibold font-display x-3 py-2">
                     <tr class="bg-slate-300 border-solid border-b-4 border-purple-800">
-                        <th class="border-solid border-r-3 border-white">Titulo</th>
-                        <th class="border-solid border-r-3 border-white">Pergunta</th>
-                        <th class="border-solid border-r-3 border-white">Colaborador</th>
-                        <th class="border-solid border-r-3 border-white">Departamento</th>
-                        <th class="border-solid border-r-3 border-white">Destino</th>
-                        <th class="border-solid border-r-3 border-white">Status</th>
-                        <th class="border-solid border-r-3 border-white">Data</th>
+                        <th>Titulo</th>
+                        <th>Pergunta</th>
+                        <th>Colaborador</th>
+                        <th>Departamento</th>
+                        <th>Destino</th>
+                        <th>Status</th>
+                        <th>Data</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% solicitacoes.forEach(s => { %>
-                        <tr>
+                        <tr class="border-b-3 border-slate-800 border-solid">
                             <td class="font-semibold"><%= s.titulo_pergunta %></td>
                             <td class="text-slate-700"><%= s.pergunta %></td>
-                            <td class="border-b-3 border-slate-800 border-solid"><%= s.nome %></td>
-                            <td class="border-b-3 border-slate-800 border-solid"><%= s.departamento %></td>
-                            <td class="border-b-3 border-slate-800 border-solid"><%= s.categoria || '' %></td>
-                            <td class="border-b-3 border-slate-800 border-solid"><%= s.status || 'aberto' %></td>
-                            <td class="border-b-3 border-slate-800 border-solid"><%= s.data_criacao ? new Date(s.data_criacao).toLocaleDateString('pt-BR') : '' %></td>
+                            <td><%= s.nome %></td>
+                            <td class="text-center"><%= s.departamento %></td>
+                            <td><%= s.categoria || '' %></td>
+                            <td><%= s.status || 'aberto' %></td>
+                            <td><%= s.data_criacao ? new Date(s.data_criacao).toLocaleDateString('pt-BR') : '' %></td>
                         </tr>
                     <% }) %>
                 </tbody>
