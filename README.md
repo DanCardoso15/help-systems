@@ -10,21 +10,21 @@ Sistema interno de perguntas e respostas para auxiliar colaboradores entre depar
 - **Autenticacao:** bcryptjs + express-session
 - **Hospedagem:** Railway
 
-## Pre-requisitos
+## Pré-requisitos
 
 - [Node.js](https://nodejs.org/) (v16 ou superior)
 - [MySQL](https://www.mysql.com/) (v8 ou superior)
 
-## Instalacao
+## Instalação
 
-1. Clone o repositorio:
+1. Clone o repositório:
 
 ```bash
 git clone https://github.com/seu-usuario/help-systems.git
 cd help-systems
 ```
 
-2. Instale as dependencias:
+2. Instale as dependências:
 
 ```bash
 npm install
@@ -36,9 +36,9 @@ npm install
 mysql -u root -p < db/ScriptSQL.txt
 ```
 
-Ou copie o conteudo de `db/ScriptSQL.txt` e execute diretamente no MySQL Workbench ou terminal do MySQL.
+Ou copie o conteúdo de `db/ScriptSQL.txt` e execute diretamente no MySQL Workbench ou terminal do MySQL.
 
-4. Crie um arquivo `.env` na raiz do projeto com as seguintes variaveis:
+4. Crie um arquivo `.env` na raíz do projeto com as seguintes variáveis:
 
 ```env
 DB_HOST=localhost
@@ -58,7 +58,7 @@ PORT=3000
 npm run dev
 ```
 
-**Modo producao:**
+**Modo produção:**
 
 ```bash
 npm start
@@ -73,23 +73,23 @@ help-systems/
 ├── app.js                 # Arquivo principal do servidor
 ├── db/
 │   ├── pool.js            # Conexao com o banco de dados
-│   └── ScriptSQL.txt      # Script de criacao do banco
+│   └── ScriptSQL.txt      # Script de criação do banco
 ├── routes/
-│   ├── auth.js            # Rotas de autenticacao (login/cadastro)
+│   ├── auth.js            # Rotas de autenticação (login/cadastro)
 │   ├── home.js            # Rota da tela inicial
-│   └── solicitacoes.js    # Rotas de criacao de solicitacoes
+│   └── solicitacoes.js    # Rotas de criação de solicitações
 ├── views/
 │   ├── login.ejs          # Pagina de login
 │   ├── cadastro.ejs       # Pagina de cadastro
 │   ├── home.ejs           # Tela inicial
-│   ├── nova-solicitacao.ejs # Formulario de nova solicitacao
+│   ├── nova-solicitacao.ejs # Formulário de nova solicitação
 │   └── partials/
-│       ├── header.ejs     # Cabecalho reutilizavel
-│       └── footer.ejs     # Rodape reutilizavel
+│       ├── header.ejs     # Cabecalho reutilizável
+│       └── footer.ejs     # Rodape reutilizável
 ├── public/
 │   └── css/
 │       └── style.css      # Estilos do sistema
-├── .env                   # Variaveis de ambiente (nao versionado)
+├── .env                   # Variáveis de ambiente (não versionado)
 └── package.json
 ```
 
@@ -101,6 +101,6 @@ help-systems/
 - [x] Criar solicitacoes (perguntas)
 - [x] Listagem de solicitacoes na tela inicial
 - [x] Deploy no Railway
-- [ ] Responder solicitacoes
+- [x] Responder solicitacoes
 - [ ] Filtros e ordenacao na listagem
 - [ ] Gerenciamento de solicitacoes (status, duplicidade)
