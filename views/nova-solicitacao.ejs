@@ -26,13 +26,13 @@
                         <option value="Juridico">Juridico</option>
                     </select>
                 </div>
-                <div class="flex gap-4 justify-between">
+                <div class="flex flex-col gap-4 justify-between">
                     <label for="titulo_pergunta">Titulo da Pergunta</label>
-                    <input type="text" id="titulo_pergunta" name="titulo_pergunta" required>
+                    <input type="text" id="titulo_pergunta" name="titulo_pergunta" required class="px-1 bg-slate-50 rounded border">
                 </div>
-                <div class="flex gap-4 justify-between">
+                <div class="flex flex-col gap-4 justify-between">
                     <label for="pergunta">Pergunta</label>
-                    <textarea id="pergunta" name="pergunta" rows="5" required></textarea>
+                    <textarea id="pergunta" name="pergunta" required class="px-1 bg-slate-50 rounded border w-3/4 h-3/5"></textarea>
                 </div>
                 <button type="submit" class="w-full py-3 bg-purple-800 text-white font-bold font-display rounded mt-5">Enviar</button>
             </form>
