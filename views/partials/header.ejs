@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-slate-50">
     <nav class="bg-purple-800 text-white w-full z-999">
         <div class="w-3/4 px-8 py-6 flex justify-between">
             <h1 class="text-4xl font-display"><a href="/">
@@ -23,7 +23,7 @@
             <% if (usuario) { %>
                 <span class="text-xl font-bold">Boas vindas, <%= usuario.nome %><br/>
                     — <%= usuario.departamento %></span>
-                <a href="/logout" class="text-3xl font-bold px-2 py-1 bg-purple-900">Sair</a>
+                <a href="/logout"><button class="text-3xl font-bold px-5 py-3 bg-purple-950 rounded border-solid border-2 border-slate-50">Sair</button></a>
             <% } %>
         </div>
     </nav>
