@@ -14,6 +14,7 @@
         <div>
             <a href="/solicitacoes/nova"><button class="w-full py-3 bg-sky-500 text-white font-bold font-display rounded mt-5">Tenho Dúvida</button></a>
             <a href="/respostas"><button class="w-full py-3 bg-emerald-800 text-white font-bold font-display rounded mt-5">Quero responder</button></a>
+            <a href="/ver-respostas" class="w-full py-3 bg-emerald-800 text-white font-bold font-display rounded mt-5"><button>Ver Respostas</button></a>
         </div>
         
         <!-- RF05.2: Filtros -->
@@ -42,6 +43,19 @@
                         <option value="Juridico" <%= filtros.departamento === 'Juridico' ? 'selected' : '' %>>Juridico</option>
                     </select>
                 </div>
+                <div class="flex gap-3">
+                    <label for="categoria">Destino:</label>
+                    <select id="categoria" name="categoria" class="px-2 py-1 bg-slate-200 border-2 border-solid border-slate-300 rounded">
+                        <option value="">Todos</option>
+                        <option value="TI" <%= filtros.categoria === 'TI' ? 'selected' : '' %>>TI</option>
+                        <option value="RH" <%= filtros.categoria === 'RH' ? 'selected' : '' %>>RH</option>
+                        <option value="Financeiro" <%= filtros.categoria === 'Financeiro' ? 'selected' : '' %>>Financeiro</option>
+                        <option value="Comercial" <%= filtros.categoria === 'Comercial' ? 'selected' : '' %>>Comercial</option>
+                        <option value="Marketing" <%= filtros.categoria === 'Marketing' ? 'selected' : '' %>>Marketing</option>
+                        <option value="Operacoes" <%= filtros.categoria === 'Operacoes' ? 'selected' : '' %>>Operacoes</option>
+                        <option value="Juridico" <%= filtros.categoria === 'Juridico' ? 'selected' : '' %>>Juridico</option>
+                    </select>
+                </div>
                 <!-- RF05.3: Ordenacao -->
                 <div class="flex gap-3">
                     <label for="ordem">Ordem</label>
@@ -66,6 +80,8 @@
                     <th>Pergunta</th>
                     <th>Colaborador</th>
                     <th>Departamento</th>
+                    <th>Destino</th>
+                    <th>Status</th>
                     <th>Data</th>
                 </tr>
             </thead>
@@ -76,6 +92,8 @@
                         <td class="text-slate-700 bg-slate-300"><%= s.pergunta %></td>
                         <td><%= s.nome %></td>
                         <td><%= s.departamento %></td>
+                        <td><%= s.categoria || '' %></td>
+                        <td><%= s.status || 'aberto' %></td>
                         <td><%= s.data_criacao ? new Date(s.data_criacao).toLocaleDateString('pt-BR') : '' %></td>
                     </tr>
                 <% }) %>
