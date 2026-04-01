@@ -9,9 +9,9 @@ router.get('/home', async (req, res) => {
     }
 
     try {
-        const { departamento, titulo, colaborador, ordem } = req.query;
+        const { departamento, titulo, colaborador, categoria, ordem } = req.query;
 
-        let sql = `SELECT s.IDsolicitacao, s.titulo_pergunta, s.pergunta, s.departamento, s.nome, s.data_criacao
+        let sql = `SELECT s.IDsolicitacao, s.titulo_pergunta, s.pergunta, s.departamento, s.nome, s.categoria, s.data_criacao
                     FROM solicitacoes s WHERE 1=1`;
         const params = [];
 
@@ -19,6 +19,11 @@ router.get('/home', async (req, res) => {
         if (departamento) {
             sql += ' AND s.departamento = ?';
             params.push(departamento);
+        }
+
+        if (categoria) {
+            sql += ' AND s.categoria = ?';
+            params.push(categoria);
         }
 
         if (titulo) {
@@ -42,13 +47,13 @@ router.get('/home', async (req, res) => {
 
         res.render('home', {
             solicitacoes,
-            filtros: { departamento: departamento || '', titulo: titulo || '', colaborador: colaborador || '', ordem: ordem || 'desc' }
+            filtros: { departamento: departamento || '', titulo: titulo || '', colaborador: colaborador || '', categoria: categoria || '', ordem: ordem || 'desc' }
         });
     } catch (err) {
         console.error(err);
         res.render('home', {
             solicitacoes: [],
-            filtros: { departamento: '', titulo: '', colaborador: '', ordem: 'desc' }
+            filtros: { departamento: '', titulo: '', colaborador: '', categoria: '', ordem: 'desc' }
         });
     }
 });

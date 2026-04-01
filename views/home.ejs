@@ -37,6 +37,18 @@
             <option value="Juridico" <%= filtros.departamento === 'Juridico' ? 'selected' : '' %>>Juridico</option>
         </select>
 
+        <label for="categoria">Destino:</label>
+        <select id="categoria" name="categoria">
+            <option value="">Todos</option>
+            <option value="TI" <%= filtros.categoria === 'TI' ? 'selected' : '' %>>TI</option>
+            <option value="RH" <%= filtros.categoria === 'RH' ? 'selected' : '' %>>RH</option>
+            <option value="Financeiro" <%= filtros.categoria === 'Financeiro' ? 'selected' : '' %>>Financeiro</option>
+            <option value="Comercial" <%= filtros.categoria === 'Comercial' ? 'selected' : '' %>>Comercial</option>
+            <option value="Marketing" <%= filtros.categoria === 'Marketing' ? 'selected' : '' %>>Marketing</option>
+            <option value="Operacoes" <%= filtros.categoria === 'Operacoes' ? 'selected' : '' %>>Operacoes</option>
+            <option value="Juridico" <%= filtros.categoria === 'Juridico' ? 'selected' : '' %>>Juridico</option>
+        </select>
+
         <!-- RF05.3: Ordenacao -->
         <label for="ordem">Ordem:</label>
         <select id="ordem" name="ordem">
@@ -59,6 +71,7 @@
                 <th>Pergunta</th>
                 <th>Colaborador</th>
                 <th>Departamento</th>
+                <th>Destino</th>
                 <th>Data</th>
             </tr>
         </thead>
@@ -69,6 +82,7 @@
                     <td><%= s.pergunta %></td>
                     <td><%= s.nome %></td>
                     <td><%= s.departamento %></td>
+                    <td><%= s.categoria || '' %></td>
                     <td><%= s.data_criacao ? new Date(s.data_criacao).toLocaleDateString('pt-BR') : '' %></td>
                 </tr>
             <% }) %>

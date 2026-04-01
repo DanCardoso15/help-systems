@@ -16,10 +16,10 @@ router.post('/solicitacoes/nova', async (req, res) => {
         return res.redirect('/login');
     }
 
-    const { titulo_pergunta, pergunta } = req.body;
+    const { titulo_pergunta, pergunta, categoria } = req.body;
 
     // RF03.2: Campos obrigatorios
-    if (!titulo_pergunta || !pergunta) {
+    if (!titulo_pergunta || !pergunta || !categoria) {
         return res.render('nova-solicitacao', {
             erro: 'Todos os campos sao obrigatorios.',
             sucesso: null
@@ -29,8 +29,8 @@ router.post('/solicitacoes/nova', async (req, res) => {
     try {
         // RF03.3: Salvar no banco
         await pool.query(
-            'INSERT INTO solicitacoes (titulo_pergunta, pergunta, nome, departamento, usuario_id) VALUES (?, ?, ?, ?, ?)',
-            [titulo_pergunta, pergunta, req.session.usuario.nome, req.session.usuario.departamento, req.session.usuario.id]
+            'INSERT INTO solicitacoes (titulo_pergunta, pergunta, nome, departamento, categoria, usuario_id) VALUES (?, ?, ?, ?, ?, ?)',
+            [titulo_pergunta, pergunta, req.session.usuario.nome, req.session.usuario.departamento, categoria, req.session.usuario.id]
         );
 
         // RF03.4: Retornar confirmacao
