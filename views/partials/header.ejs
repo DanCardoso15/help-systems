@@ -13,15 +13,16 @@
 </head>
 <body>
     <nav class="bg-purple-800 text-white w-full z-999">
-        <div class="w-4/5 px-8 py-6 flex justify-between">
+        <div class="w-3/4 px-8 py-6 flex justify-between">
             <h1 class="text-4xl font-display"><a href="/">
                 <img
                 src="../../public/media/icon-text-dark.png"
                 alt="Glass Onion Logo"
                 width="328"
-                height="auto"/></a></h1>
+                height="70"/></a></h1>
             <% if (usuario) { %>
-                <span class="text-lg font-bold"><%= usuario.nome %> — <%= usuario.departamento %></span>
+                <span class="text-lg font-bold">Boas vindas, <%= usuario.nome %><br/>
+                    — <%= usuario.departamento %></span>
                 <a href="/logout">Sair</a>
             <% } %>
         </div>
