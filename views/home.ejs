@@ -1,79 +1,87 @@
 <%- include('partials/header') %>
 
-<h2>Tela Inicial</h2>
-
-<!-- RF02.3: Nome e departamento do usuario -->
-<div>
-    <p><strong>Usuario:</strong> <%= usuario.nome %></p>
-    <p><strong>Departamento:</strong> <%= usuario.departamento %></p>
-</div>
-
-<!-- RF02.2: Botoes de acesso -->
-<div>
-    <a href="/solicitacoes/nova"><button>Registrar Pergunta</button></a>
-    <a href="/respostas"><button>Registrar Resposta</button></a>
-</div>
-
-<!-- RF05.2: Filtros -->
-<h3>Solicitacoes</h3>
-
-<form method="GET" action="/home">
+<div class="w-full h-screen flex justify-center items-center">
     <div>
-        <label for="titulo">Titulo:</label>
-        <input type="text" id="titulo" name="titulo" value="<%= filtros.titulo %>" placeholder="Buscar por titulo">
-
-        <label for="colaborador">Colaborador:</label>
-        <input type="text" id="colaborador" name="colaborador" value="<%= filtros.colaborador %>" placeholder="Buscar por colaborador">
-
-        <label for="departamento">Departamento:</label>
-        <select id="departamento" name="departamento">
-            <option value="">Todos</option>
-            <option value="TI" <%= filtros.departamento === 'TI' ? 'selected' : '' %>>TI</option>
-            <option value="RH" <%= filtros.departamento === 'RH' ? 'selected' : '' %>>RH</option>
-            <option value="Financeiro" <%= filtros.departamento === 'Financeiro' ? 'selected' : '' %>>Financeiro</option>
-            <option value="Comercial" <%= filtros.departamento === 'Comercial' ? 'selected' : '' %>>Comercial</option>
-            <option value="Marketing" <%= filtros.departamento === 'Marketing' ? 'selected' : '' %>>Marketing</option>
-            <option value="Operacoes" <%= filtros.departamento === 'Operacoes' ? 'selected' : '' %>>Operacoes</option>
-            <option value="Juridico" <%= filtros.departamento === 'Juridico' ? 'selected' : '' %>>Juridico</option>
-        </select>
-
-        <!-- RF05.3: Ordenacao -->
-        <label for="ordem">Ordem:</label>
-        <select id="ordem" name="ordem">
-            <option value="desc" <%= filtros.ordem === 'desc' ? 'selected' : '' %>>Mais recentes</option>
-            <option value="asc" <%= filtros.ordem === 'asc' ? 'selected' : '' %>>Mais antigos</option>
-        </select>
-
-        <button type="submit">Filtrar</button>
-        <a href="/home">Limpar</a>
+        <h1>Dashboard</h1>
+        
+        <!-- RF02.3: Nome e departamento do usuario -->
+        <div>
+            <p><strong>Usuario:</strong> <%= usuario.nome %></p>
+            <p><strong>Departamento:</strong> <%= usuario.departamento %></p>
+        </div>
+        
+        <!-- RF02.2: Botoes de acesso -->
+        <div>
+            <a href="/solicitacoes/nova"><button class="w-full py-3 bg-sky-500 text-white font-bold font-display rounded mt-5">Tenho Dúvida</button></a>
+            <a href="/respostas"><button class="w-full py-3 bg-emerald-800 text-white font-bold font-display rounded mt-5">Quero responder</button></a>
+        </div>
+        
+        <!-- RF05.2: Filtros -->
+        <h3>Solicitações</h3>
+        
+        <div class="flex flex-col gap-8">
+            <form method="GET" action="/home" class="flex gap-4">
+                <div class="flex gap-3">
+                    <label for="titulo">Titulo</label>
+                    <input type="text" id="titulo" name="titulo" value="<%= filtros.titulo %>" placeholder="Buscar por titulo" class="px-1 bg-slate-50 rounded border">
+                </div>
+                <div class="flex gap-3">
+                    <label for="colaborador">Nome</label>
+                    <input type="text" id="colaborador" name="colaborador" value="<%= filtros.colaborador %>" placeholder="Buscar por colaborador" class="px-1 bg-slate-50 rounded border">
+                </div>
+                <div class="flex gap-3">
+                    <label for="departamento">Departamento</label>
+                    <select id="departamento" name="departamento" class="px-2 py-1 bg-slate-200 border-2 border-solid border-slate-300 rounded">
+                        <option value="">Todos</option>
+                        <option value="TI" <%= filtros.departamento === 'TI' ? 'selected' : '' %>>TI</option>
+                        <option value="RH" <%= filtros.departamento === 'RH' ? 'selected' : '' %>>RH</option>
+                        <option value="Financeiro" <%= filtros.departamento === 'Financeiro' ? 'selected' : '' %>>Financeiro</option>
+                        <option value="Comercial" <%= filtros.departamento === 'Comercial' ? 'selected' : '' %>>Comercial</option>
+                        <option value="Marketing" <%= filtros.departamento === 'Marketing' ? 'selected' : '' %>>Marketing</option>
+                        <option value="Operacoes" <%= filtros.departamento === 'Operacoes' ? 'selected' : '' %>>Operacoes</option>
+                        <option value="Juridico" <%= filtros.departamento === 'Juridico' ? 'selected' : '' %>>Juridico</option>
+                    </select>
+                </div>
+                <!-- RF05.3: Ordenacao -->
+                <div class="flex gap-3">
+                    <label for="ordem">Ordem</label>
+                    <select id="ordem" name="ordem" class="px-2 py-1 bg-slate-200 border-2 border-solid border-slate-300 rounded">
+                        <option value="desc" <%= filtros.ordem === 'desc' ? 'selected' : '' %>>Mais recentes</option>
+                        <option value="asc" <%= filtros.ordem === 'asc' ? 'selected' : '' %>>Mais antigos</option>
+                    </select>
+                </div>
+                <button type="submit" class="px-5 py-3 bg-purple-800 text-white font-bold font-display rounded mt-5">Filtrar</button>
+                <a href="/home" class="px-5 py-3 bg-slate-400 text-white font-bold font-display rounded mt-5">Limpar</a>
+            </form>
+        </div>
     </div>
-</form>
-
-<% if (solicitacoes.length === 0) { %>
-    <p>Nenhuma solicitacao encontrada.</p>
-<% } else { %>
-    <table border="1" cellpadding="8" cellspacing="0">
-        <thead>
-            <tr>
-                <th>Titulo</th>
-                <th>Pergunta</th>
-                <th>Colaborador</th>
-                <th>Departamento</th>
-                <th>Data</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% solicitacoes.forEach(s => { %>
+    
+    <% if (solicitacoes.length === 0) { %>
+        <p>Nenhuma solicitacao encontrada.</p>
+    <% } else { %>
+        <table border="1" cellpadding="8" cellspacing="0" class="px-5 py-3 bg-slate-200 text-white font-bold font-display rounded mt-5">
+            <thead class="text-lg rounded text-center px-3 py-2">
                 <tr>
-                    <td><%= s.titulo_pergunta %></td>
-                    <td><%= s.pergunta %></td>
-                    <td><%= s.nome %></td>
-                    <td><%= s.departamento %></td>
-                    <td><%= s.data_criacao ? new Date(s.data_criacao).toLocaleDateString('pt-BR') : '' %></td>
+                    <th>Titulo</th>
+                    <th>Pergunta</th>
+                    <th>Colaborador</th>
+                    <th>Departamento</th>
+                    <th>Data</th>
                 </tr>
-            <% }) %>
-        </tbody>
-    </table>
-<% } %>
+            </thead>
+            <tbody>
+                <% solicitacoes.forEach(s => { %>
+                    <tr>
+                        <td class="font-semibold"><%= s.titulo_pergunta %></td>
+                        <td class="text-slate-700 bg-slate-300"><%= s.pergunta %></td>
+                        <td><%= s.nome %></td>
+                        <td><%= s.departamento %></td>
+                        <td><%= s.data_criacao ? new Date(s.data_criacao).toLocaleDateString('pt-BR') : '' %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+</div>
 
 <%- include('partials/footer') %>
