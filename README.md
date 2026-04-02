@@ -109,8 +109,9 @@ help-systems/
 
 ### RF02 - Tela Inicial
 - [x] Interface com nome e departamento do usuario
-- [x] Botoes de acesso (Registrar Pergunta, Registrar Resposta, Ver Respostas)
-- [x] Listagem de solicitacoes
+- [x] Botoes de acesso (Tenho Duvida, Quero Responder, Ver Respostas)
+- [x] Listagem de solicitacoes filtrada por departamento destino
+- [x] Badge de notificacao de respostas nao lidas
 
 ### RF03 - Criar Solicitacoes
 - [x] Formulario com campos obrigatorios (departamento destino, titulo, pergunta)
@@ -121,12 +122,15 @@ help-systems/
 - [x] Interface para responder perguntas
 - [x] Respostas vinculadas a solicitacao
 - [x] Notificacao de conclusao
-- [x] Pagina de visualizacao de respostas
+- [x] Pagina de visualizacao de respostas recebidas pelo departamento
+- [x] Solicitacoes resolvidas sao ocultadas da lista para responder
+- [x] Respostas marcadas como visualizadas ao acessar a pagina
 
 ### RF05 - Listar Solicitacoes
-- [x] Tabela com listagem de solicitacoes
+- [x] Tabela com listagem de solicitacoes recebidas pelo departamento
 - [x] Filtros por departamento, destino, titulo e colaborador
 - [x] Ordenacao por data de criacao (mais recentes/mais antigos)
+- [x] Cada departamento visualiza apenas as solicitacoes direcionadas a ele
 
 ### RF06 - Gerenciamento de Solicitacoes
 - [x] Validacao de duplicidade (mesmo titulo e categoria)
