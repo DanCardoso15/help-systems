@@ -12,7 +12,9 @@ router.get('/respostas', async (req, res) => {
         const [solicitacoes] = await pool.query(
             `SELECT IDsolicitacao, titulo_pergunta, pergunta, nome, departamento
              FROM solicitacoes
-             ORDER BY IDsolicitacao DESC`
+             WHERE categoria = ? AND (status IS NULL OR status != 'resolvido')
+             ORDER BY IDsolicitacao DESC`,
+            [req.session.usuario.departamento]
         );
 
         res.render('respostas', { solicitacoes });
@@ -36,7 +38,18 @@ router.get('/ver-respostas', async (req, res) => {
              FROM respostas r
              LEFT JOIN solicitacoes s ON r.solicitacao_id = s.IDsolicitacao
              LEFT JOIN usuarios u ON r.usuario_id = u.IDusuario
-             ORDER BY r.IDrespostas DESC`
+             WHERE s.departamento = ?
+             ORDER BY r.IDrespostas DESC`,
+            [req.session.usuario.departamento]
+        );
+
+        // Marcar respostas como visualizadas
+        await pool.query(
+            `UPDATE respostas r
+             LEFT JOIN solicitacoes s ON r.solicitacao_id = s.IDsolicitacao
+             SET r.visualizada = 1
+             WHERE s.departamento = ? AND r.visualizada = 0`,
+            [req.session.usuario.departamento]
         );
 
         res.render('ver-respostas', { respostas });

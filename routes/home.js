@@ -12,8 +12,8 @@ router.get('/home', async (req, res) => {
         const { departamento, titulo, colaborador, categoria, ordem } = req.query;
 
         let sql = `SELECT s.IDsolicitacao, s.titulo_pergunta, s.pergunta, s.departamento, s.nome, s.categoria, s.status, s.data_criacao
-                    FROM solicitacoes s WHERE 1=1`;
-        const params = [];
+                    FROM solicitacoes s WHERE s.categoria = ?`;
+        const params = [req.session.usuario.departamento];
 
         // RF05.2: Filtros
         if (departamento) {
@@ -45,14 +45,25 @@ router.get('/home', async (req, res) => {
 
         const [solicitacoes] = await pool.query(sql, params);
 
+        // Contar respostas recebidas pelo departamento do usuario
+        const [respostasCount] = await pool.query(
+            `SELECT COUNT(*) AS total FROM respostas r
+             LEFT JOIN solicitacoes s ON r.solicitacao_id = s.IDsolicitacao
+             WHERE s.departamento = ? AND r.visualizada = 0`,
+            [req.session.usuario.departamento]
+        );
+        const totalRespostas = respostasCount[0].total;
+
         res.render('home', {
             solicitacoes,
+            totalRespostas,
             filtros: { departamento: departamento || '', titulo: titulo || '', colaborador: colaborador || '', categoria: categoria || '', ordem: ordem || 'desc' }
         });
     } catch (err) {
         console.error(err);
         res.render('home', {
             solicitacoes: [],
+            totalRespostas: 0,
             filtros: { departamento: '', titulo: '', colaborador: '', categoria: '', ordem: 'desc' }
         });
     }

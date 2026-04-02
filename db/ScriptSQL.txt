@@ -30,6 +30,7 @@ CREATE TABLE Respostas (
     departamento VARCHAR(255) NOT NULL,
     solicitacao_id INT,
     usuario_id INT,
+    visualizada TINYINT DEFAULT 0,
     FOREIGN KEY (solicitacao_id) REFERENCES Solicitacoes(IDsolicitacao) ON DELETE CASCADE,
     FOREIGN KEY (usuario_id) REFERENCES Usuarios(IDusuario) ON DELETE CASCADE
 );

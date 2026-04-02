@@ -13,7 +13,7 @@
         
             <!-- RF02.2: Botoes de acesso -->
             <div class="w-full flex gap-4 text-xl flex-row-reverse">
-                <a href="/ver-respostas" class="px-4 py-2 bg-amber-400 text-white font-bold font-display rounded mt-5"><button>Ver Respostas</button></a>
+                <a href="/ver-respostas" class="relative px-4 py-2 bg-amber-400 text-white font-bold font-display rounded mt-5"><button>Ver Respostas</button><% if (totalRespostas > 0) { %><span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center"><%= totalRespostas %></span><% } %></a>
                 <a href="/respostas"><button class="px-6 py-2 bg-emerald-600 text-white font-bold font-display rounded mt-5">Quero responder</button></a>
                 <a href="/solicitacoes/nova"><button class="px-6 py-2 bg-sky-500 text-white font-bold font-display rounded mt-5">Tenho Dúvida</button></a>
             </div>
